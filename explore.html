@@ -21,12 +21,15 @@
           <span>ASCEND</span>
         </a>
         
-        <nav>
+        <nav id="main-nav" aria-label="Main navigation">
             <ul>
                 </ul>
         </nav>
 
-        <button id="hamburger-btn" aria-label="Toggle navigation">
+        <button id="hamburger-btn" 
+           aria-label="Toggle navigation"
+           aria-controls="main-nav" 
+           aria-expanded="false">
             <span class="line line1"></span>
             <span class="line line2"></span>
             <span class="line line3"></span>
@@ -46,7 +49,7 @@
             </div>
         </section>
 
-        <section class="results-section">
+        <section class="results-section" aria-labelledby="results-title">
             <div class="container">
 
                 <div id="loading-spinner" class="spinner-container">
@@ -56,7 +59,7 @@
                     </svg>
                 </div>
 
-                <div id="results-container" class="results-grid">
+                <div id="results-container" class="results-grid" aria-live="polite">
                     </div>
 
                 <div id="no-results-message" style="display: none;">
@@ -71,11 +74,11 @@
 
     <footer>
         <div class="container">
-            <div class="footer-links">
+            <nav class="footer-links" aria-label="Footer navigation">
                 <a href="#">About</a>
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
-            </div>
+            </nav>
         </div>
     </footer>
 
