@@ -1,10 +1,10 @@
 'use strict';
 
-/* EXPLORE.JS (Explore page)*/
+/* explore.js (Explore page)*/
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Check if we are truly on the explore page
+    // Correct page checker i.e explore page
     if (!document.getElementById('explore-page')) {
         return;
     }
@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const spinner = document.getElementById('loading-spinner');
     const noResultsMessage = document.getElementById('no-results-message');
     
-// GSAP Page load timeline 
+// GSAP Page load timeline.
     gsap.timeline()
         .to(".explore-title", { opacity: 1, y: 0, duration: 0.5 })
         .to(".explore-tagline", { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
         .to(".search-bar-container", { opacity: 1, y: 0, duration: 0.5 }, "-=0.2");
 
-// SVG/MotionPath (Loading spinner)
+// SVG/MotionPath (Loading spinner).
     const spinnerTimeline = gsap.timeline({ repeat: -1, paused: true });
     spinnerTimeline.fromTo("#spinner-path", 
         { strokeDashoffset: 283, ease: "power1.in" },
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const headers = {
             "Host": "data.usajobs.gov",
             "User-Agent": "Ascend-Exam-Project/1.0 (umthaoupa@gmail.com)", // User-Agent
-            "Authorization-Key": "MpRDljoknJEr/AcmACHs94wSUUPnfkrmxESszM8Vn5k=" // API Key
+            "Authorization-Key": "MpRDljoknJEr/AcmACHs94wSUUPnfkrmxESszM8Vn5k=" // The API Key
         };
 
         try {

@@ -1,6 +1,6 @@
 'use strict';
 
-/* HOME.JS (Home Page Logic) */
+/* home.JS (Home Page Logic) */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -64,11 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* ===================================================
-   NEW: Live API Job Previews
-   =================================================== */
+    /* Live API Job Previews */
 
-// We'll call this function right away
+
 fetchPreviewJobs();
 
 async function fetchPreviewJobs() {
@@ -77,14 +75,14 @@ async function fetchPreviewJobs() {
 
     container.innerHTML = '<p>Loading live jobs...</p>'; // Loading state
 
-    // API URL - let's search for "Data Analyst" and get 3 results
+    // API URL - it uses "Data Analyst" and will generate 3 results
     const keyword = "Data Analyst";
     const url = `https://data.usajobs.gov/api/search?Keyword=${keyword}&ResultsPerPage=3`;
     
     const headers = {
         "Host": "data.usajobs.gov",
-        "User-Agent": "Ascend-Exam-Project/1.0 (your-email@example.com)", // Your info
-        "Authorization-Key": "MpRDljoknJEr/AcmACHs94wSUUPnfkrmxESszM8Vn5k=" // Your Key
+        "User-Agent": "Ascend-Exam-Project/1.0 (umthaoupa@gmail.com)", // Your info
+        "Authorization-Key": "MpRDljoknJEr/AcmACHs94wSUUPnfkrmxESszM8Vn5k=" // The API Key
     };
 
     try {
@@ -117,9 +115,9 @@ function renderPreviewCards(jobs) {
     jobs.forEach(job => {
         const jobData = job.MatchedObjectDescriptor;
         const card = document.createElement('div');
-        card.className = 'career-card-preview'; // Use the same style
+        card.className = 'career-card-preview'; // Maintain same styling.
 
-        // Call our new SHARED function
+        // Calls the function.
         const salaryHTML = formatSalary(jobData.PositionRemuneration);
 
         card.innerHTML = `
@@ -134,21 +132,21 @@ function renderPreviewCards(jobs) {
         container.appendChild(card);
     });
 
-    // Animate the new cards with the looping "flash" effect
+    // Animates the cards with a looping "flash" effect.
     const cards = gsap.utils.toArray(".career-card-preview");
 
     const flashTimeline = gsap.timeline({
-        repeat: -1, // Loop forever
-        repeatDelay: 2 // Wait 2 seconds between loops
+        repeat: -1, // Loop forever.
+        repeatDelay: 2 // Wait 2 seconds between loops.
     });
 
     flashTimeline.to(cards, {
         scale: 1.05,
         border: "2px solid var(--accent-gold)", // Flash to gold
         duration: 0.5,
-        stagger: 0.3, // one after another
-        yoyo: true, // animates back to normal
-        repeat: 1 // this makes it go (on -> off)
+        stagger: 0.3, // One by one.
+        yoyo: true, // Animates back to original.
+        repeat: 1 // Sets it go (on & off).
     });
 }
 

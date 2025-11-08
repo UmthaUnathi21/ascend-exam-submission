@@ -1,38 +1,31 @@
 'use strict';
 
-/* =================================
-   DASHBOARD.JS (Stateful Logic)
-   ================================= */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. GET ALL DOM ELEMENTS ---
-    
-    // Onboarding Form Elements
+    // Onboarding form.
     const onboardingFormContainer = document.getElementById('onboarding-form-container');
     const newUserForm = document.getElementById('new-user-form');
     
-    // Main Dashboard Elements
+    // Main dashboard.
     const mainDashboardContent = document.getElementById('main-dashboard-content');
     
-    // Exit if we're not on the dashboard page
+    // Correct page checker i.e dashboard page
     if (!mainDashboardContent) {
         return; 
     }
 
-    // Summary Header Elements
+    // Summary header.
     const welcomeTitle = document.querySelector('.welcome-title');
     const currentSalaryEl = document.getElementById('current-salary-num');
     const goalSalaryEl = document.getElementById('goal-salary-num');
     const careerFieldEl = document.getElementById('career-field-text');
     
-    // Milestone Elements
+    // Milestone elements.
     const milestonesListContainer = document.getElementById('milestones-list');
     const addMilestoneForm = document.getElementById('add-milestone-form');
 
 
-    // --- 2. CORE DATA FUNCTIONS ---
-
+    //Core data functions.
     function loadUserData() {
         const savedData = localStorage.getItem('ascendUserData');
         return savedData ? JSON.parse(savedData) : null;
@@ -43,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 3. STATE CONTROLLER FUNCTIONS ---
+    //State controller.
 
     function showOnboardingForm() {
         mainDashboardContent.classList.add('hidden');
@@ -58,26 +51,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. UI & LOGIC FUNCTIONS ---
+    //UI logic.
 
     function populateDashboard(data) {
         const graphCurrentSalary = document.getElementById('graph-current-salary');
         const graphGoalSalary = document.getElementById('graph-goal-salary');
 
-        // 1. Populate Header
+        //Populate.
         welcomeTitle.textContent = `Welcome, ${data.name}!`;
         careerFieldEl.textContent = data.career;
 
         graphCurrentSalary.textContent = `$${data.currentSalary.toLocaleString()}`;
         graphGoalSalary.textContent = `$${data.desiredSalary.toLocaleString()}`;
         
-        // 2. Animate the header summary
+        //Animate the header summary.
         runHeaderAnimation(data.currentSalary, data.desiredSalary);
 
-        // 3. Render the dynamic milestones list
+        //Render the dynamic milestones list.
         renderMilestones(data.milestones);
         
-        // 4. Animate the graph
+        //Animate the graph.
         gsap.to("#trajectory-path", {
             strokeDashoffset: 0,
             duration: 2.5,
@@ -102,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 goal: desiredSalary || 0,
                 ease: "power3.out",
                 onUpdate: () => {
-                    // These variables are now guaranteed to exist
                     if(currentSalaryEl) currentSalaryEl.textContent = Math.round(counters.current).toLocaleString();
                     if(goalSalaryEl) goalSalaryEl.textContent = Math.round(counters.goal).toLocaleString();
                 }
@@ -179,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. EVENT LISTENERS ---
 
     if (newUserForm) {
         newUserForm.addEventListener('submit', (e) => {
@@ -237,16 +228,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 6. INITIAL PAGE LOAD (The "Controller") ---
+    //The controller.
 
     function init() {
         const data = loadUserData();
         
         if (data === null) {
-            // STATE 1: No data, show the setup form
+            // STATE 1: No data, show the setup form.
             showOnboardingForm();
         } else {
-            // STATE 2: Data exists, show the main dashboard
+            // STATE 2: Data exists, show the main dashboard.
             showMainDashboard(data);
         }
     }

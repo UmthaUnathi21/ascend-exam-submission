@@ -1,5 +1,5 @@
 'use strict';
-/* MAIN.JS (SHARED CODE)*/
+/* main.JS (shared code)*/
 
 /* Registers GSAP plugins for all other scripts.*/
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Checks if nav container exists before trying to use it.
     if (navContainer) {
-        // Find the current page
+        // Finds the current page.
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
         navLinks.forEach(link => {
@@ -39,22 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Function to format the salary data */
     function formatSalary(remunerationArray) {
         
-        // --- THIS IS THE FIX ---
-        // We check if the array exists and has at least one item
+        // Check if array exists and has at least one item.
         if (!remunerationArray || remunerationArray.length === 0) {
             return '<p class="salary">Salary not specified</p>';
         }
 
-        // We get the FIRST salary object from the array
         const salaryData = remunerationArray[0];
-        // --- END OF FIX ---
 
-        // Now we check the object from the array
+        // Checks object from the array.
         if (!salaryData.MinimumRange) {
             return '<p class="salary">Salary not specified</p>';
         }
 
-        // And use the object's data
+        // Use of the object's data.
         const min = parseFloat(salaryData.MinimumRange).toLocaleString('en-US');
         const max = parseFloat(salaryData.MaximumRange).toLocaleString('en-US');
         const rate = salaryData.Description;
