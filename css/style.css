@@ -1,0 +1,921 @@
+/* Font importing and details from my style guide */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+    --primary-blue: #0A2342;
+    --secondary-gray: #8D99AE;
+    --accent-gold: #FFD700;
+    --bg-white: #F8F9FA;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+/* Global and mobile-first reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-white);
+    color: #333; /* Darker text for mobile readability */
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2 {
+    font-family: var(--font-body); 
+    font-weight: 900;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Header and Nav */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-weight: 900;
+    font-size: 20px;
+    color: #000;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 45px; 
+    width: auto;
+    margin-right: 8px; 
+}
+
+.logo .text-gold {
+    color: var(--accent-gold);
+}
+
+nav { display: none; } /* Mobile nav will be a hamburger menu. Hidden. */
+
+.btn-signin {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* Reusable CTA btns */
+.cta-button, .cta-button-secondary {
+    display: block;
+    text-align: center;
+    background-color: var(--accent-gold);
+    color: #000;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-button-secondary {
+    background: none;
+    border: 2px solid #000;
+}
+
+.cta-button-secondary:hover {
+    /* Lifts the button. */
+    transform: translateY(-3px); 
+    
+    /* Changes background to primary blue. */
+    background-color: var(--primary-blue); 
+    
+    /* Change text to white. */
+    color: #fff; 
+}
+
+.cta-button:hover {
+    transform: translateY(-3px); 
+    background-color: var(--primary-blue); 
+    color: #fff; 
+}
+
+/* Hero section */
+.hero {
+    background-color: #fff;
+    padding: 40px 0;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.hero-title {
+    font-family: var(--font-body);
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.hero-title span {
+    display: block; /* Each word on a new line, like the wireframe */
+    opacity: 0; /* Set for GSAP animation */
+}
+
+.hero-title .text-gold {
+    color: var(--accent-gold);
+}
+
+.hero-tagline {
+    font-size: 16px;
+    color: var(--secondary-gray);
+    margin: 15px 0;
+    opacity: 0; /* Set for GSAP */
+}
+
+.hero .cta-button {
+    opacity: 0; /* Set for GSAP */
+}
+
+/* 6. HOW IT WORKS SECTION */
+.how-it-works {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.step {
+    opacity: 0; /* Set for GSAP ScrollTrigger */
+}
+
+.step img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.step h3 {
+    font-family: var(--font-body);
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.step p {
+    font-size: 14px;
+    color: var(--secondary-gray);
+}
+
+/* Explore careeers preview section (Home Page) */
+.explore-preview {
+    background-color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.explore-preview-tagline {
+    font-size: 16px;
+    color: var(--secondary-gray);
+    margin-bottom: 30px;
+}
+
+/* This is the new grid */
+.explore-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.career-card-preview {
+    background: #fff;
+    border: 2px solid #eee;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    justify-content: space-between;
+    text-align: left;
+}
+
+.career-card-preview h4 {
+    font-weight: 700;
+}
+
+.organization-preview {
+    font-size: 14px;
+    color: var(--secondary-gray);
+    margin-bottom: 10px;
+}
+
+.salary-preview .salary {
+    margin-bottom: 0; 
+}
+
+.explore-preview .cta-button {
+    display: inline-block;
+    width: auto;
+}
+
+/* On desktop they'll be side-by-side */
+@media (min-width: 769px) {
+    .career-card-preview {
+        flex-direction: row;
+        align-items: center;
+    }
+    .organization-preview {
+        margin-bottom: 0;
+    }
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.testimonial-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    opacity: 0; /* Set for GSAP */
+}
+
+.quote-icon {
+    font-size: 60px;
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    line-height: 1;
+}
+
+.author {
+    font-size: 14px;
+    color: var(--secondary-gray);
+    margin-top: 10px;
+}
+
+/* Final CTA */
+.final-cta {
+    background: #fff;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.final-cta h2 {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+/* Footer */
+footer {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--secondary-gray);
+    font-size: 14px;
+}
+
+/* Desktop styling */
+@media (min-width: 769px) {
+    .container {
+        width: 85%;
+        max-width: 1100px;
+    }
+
+    nav { display: block; } /* Show nav on desktop */
+    .btn-signin { display: none; } /* Hide mobile button */
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+    nav ul li { margin-left: 30px; }
+    nav ul li a {
+        text-decoration: none;
+        color: var(--primary-blue);
+        font-weight: 700;
+        padding-bottom: 5px;
+    }
+    nav ul li a.active {
+        color: var(--accent-gold);
+        border-bottom: 2px solid var(--accent-gold);
+    }
+
+    .hero {
+        padding: 100px 0;
+        text-align: center;
+    }
+    .hero-title {
+        font-size: 60px;
+    }
+    .hero-title span {
+        display: inline-block;
+        margin: 0 5px;
+    }
+    .hero-tagline {
+        font-size: 20px;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonial-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .career-card-preview p {
+        display: block;
+    }
+}
+
+/* Dashboard page styles */
+
+.dashboard-header {
+    background-color: #fff;
+    padding: 40px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.welcome-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    margin-bottom: 30px;
+    opacity: 0; /* Set for GSAP */
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: stack them */
+    gap: 20px;
+}
+
+.summary-metric {
+    background-color: var(--bg-white);
+    padding: 20px;
+    border-radius: 8px;
+    opacity: 0; /* Set for GSAP */
+}
+
+.summary-metric h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--secondary-gray);
+    margin-bottom: 5px;
+}
+
+.summary-metric p {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1.2;
+}
+
+/* 2. Trajectory Graph */
+.trajectory-graph {
+    padding: 40px 0;
+}
+
+.trajectory-graph h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.graph-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Set used for GSAP line-drawing animation */
+#trajectory-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* 3. Dashboard Content Grid (Form and milestones) */
+.dashboard-content {
+    padding: 20px 0 60px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: stack them */
+    gap: 40px;
+}
+
+.inputs-form h2, .milestones h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+/* 4. Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: var(--font-body);
+}
+
+/* Real-time validation styles */
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.form-group .is-invalid {
+    border-color: var(--feedback-red);
+}
+
+.form-group .is-valid {
+    border-color: var(--feedback-green);
+}
+
+.error-message {
+    color: var(--feedback-red);
+    font-size: 12px;
+    margin-top: 5px;
+    display: none; /* Hidden by default */
+}
+
+/* Style submit button */
+.inputs-form .cta-button {
+    width: 100%;
+}
+
+button:disabled {
+    background-color: var(--secondary-gray);
+    cursor: not-allowed;
+}
+button:disabled:hover {
+    background-color: var(--secondary-gray);
+    transform: none;
+}
+
+
+/* 5. Milestones Styles */
+.milestones-list {
+    margin-bottom: 20px;
+}
+
+.milestone-item {
+    background-color: #fff;
+    border-left: 4px solid var(--accent-gold);
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 0 5px 5px 0;
+    
+    /* Set for GSAP ScrollTrigger */
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.milestone-item h4 {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.btn-add-milestone {
+    background: none;
+    border: 1px dashed var(--secondary-gray);
+    color: var(--secondary-gray);
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Desktop styling */
+@media (min-width: 769px) {
+    .summary-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3-column grid on desktop */
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr; /* 2-column grid on desktop */
+    }
+}
+
+/* Explore Career Page styling */
+
+.explore-header {
+    background-color: #fff;
+    padding: 40px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.explore-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0; /* For GSAP */
+}
+
+.explore-tagline {
+    font-size: 16px;
+    color: var(--secondary-gray);
+    margin-bottom: 30px;
+    opacity: 0; /* For GSAP */
+}
+
+.search-bar-container {
+    display: flex;
+    flex-direction: column; /* Mobile-first: stack */
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0; /* Set for GSAP */
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: var(--font-body);
+}
+
+.search-bar-container .cta-button {
+    margin-top: 0;
+}
+
+/* 2. Results Section */
+.results-section {
+    padding: 40px 0 60px;
+}
+
+/* 3. Loading Spinner (For GSAP) */
+.spinner-container {
+    display: none; /* Hidden by default */
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 40px auto;
+}
+.spinner-svg {
+    transform: rotate(-90deg);
+}
+.spinner-path-bg {
+    stroke: #eee;
+    stroke-width: 8;
+    fill: none;
+}
+.spinner-path {
+    stroke: var(--primary-blue);
+    stroke-width: 8;
+    fill: none;
+    stroke-linecap: round;
+    /* This is the key for the GSAP animation */
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+}
+
+/* 4. Results Grid and Cards */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first: 1 column */
+    gap: 20px;
+}
+
+.career-card {
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    /* Set for GSAP stagger animation */
+    opacity: 0;
+    transform: translateY(30px);
+
+    /* Set for hover animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.career-card:hover {
+    /* Lifts the card off the page */
+    transform: translateY(-5px);
+    
+    /* Adds a shadow to enhance the animation */
+    box-shadow: 0 8px 25px rgb(251, 251, 1);
+}
+
+.career-card h3 {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.career-card .organization {
+    font-weight: 700;
+    color: var(--secondary-gray);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.career-card .location {
+    font-size: 14px;
+    color: var(--secondary-gray);
+    margin-bottom: 20px;
+}
+
+.career-card .btn-details {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.career-card .btn-details:hover {
+    background-color: var(--primary-blue);
+    color: #fff; 
+}
+
+/* 5. No Results Message */
+#no-results-message {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* Desktop styling */
+@media (min-width: 769px) {
+    .search-bar-container {
+        flex-direction: row; /* Side-by-side on desktop */
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+}
+@media (min-width: 1024px) {
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    }
+}
+
+.career-card .salary {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+/* Utility styling */
+
+/* Utitlity class to hide/show elements with JS */
+.hidden {
+    display: none;
+}
+
+/* Styles for "Welcome" form */
+#onboarding-form-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.onboarding-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.onboarding-box h2 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.onboarding-box p {
+    font-size: 16px;
+    color: var(--secondary-gray);
+    margin-bottom: 30px;
+}
+
+#new-user-form .form-group {
+    text-align: left;
+}
+
+#new-user-form .cta-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Update summary grid to be 3 columns */
+.summary-grid {
+    grid-template-columns: 1fr; /* Mobile */
+}
+
+@media (min-width: 769px) {
+    .summary-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3-column grid on desktop */
+    }
+}
+
+/* Update dashboard content to be 1 column */
+.dashboard-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Trajectory graph styles */
+.graph-frame {
+    display: flex;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Y-Axis */
+.y-axis {
+    width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    padding-right: 15px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 14px;
+}
+
+.y-axis #graph-goal-salary {
+    line-height: 1; /* Aligns to the top of the line */
+}
+
+.y-axis #graph-current-salary {
+    line-height: 3; 
+}
+
+
+/* Holds the SVG and the X-Axis */
+.graph-main {
+    flex-grow: 1; 
+    width: 100%;
+}
+
+/* X-Axis (the new row) */
+.x-axis {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0;
+    font-size: 12px;
+    color: var(--secondary-gray);
+    font-weight: 700;
+    /* This roughly aligns with the SVG path's start/end */
+    max-width: 550px; 
+    margin-left: 30px; 
+}
+
+.explore-preview {
+    background-color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.explore-preview-tagline {
+    font-size: 16px;
+    color: var(--secondary-gray);
+    margin-bottom: 30px;
+}
+
+.career-card-preview {
+    background: #fff;
+    border: 2px solid #eee;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+    /* Set for GSAP animation */
+    transition: border 0.5s ease, transform 0.5s ease;
+}
+
+.career-card-preview h4 {
+    font-weight: 700;
+}
+.salary-preview {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--secondary-gray);
+}
+
+.explore-preview .cta-button {
+    margin-top: 30px;
+    display: inline-block; 
+    width: auto;
+}
+
+/* Hero section (Homepage) */
+
+.hero {
+    background-color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    background-image: url('../images/homebg.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+/* Overlay for readable text */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.519); 
+    z-index: 1; 
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}

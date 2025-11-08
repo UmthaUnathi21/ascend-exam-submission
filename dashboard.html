@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascend - Dashboard</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+</head>
+<body>
+
+    <header>
+    <div class="container"> 
+        
+        <div class="logo">
+          <img src="./images/Ascend-logo(1).png" alt="Ascend Logo" class="logo-img">
+          <span>ASCEND</span>
+        </div>
+        
+        <nav>
+            <ul>
+                </ul>
+        </nav>
+
+    </div> </header>
+
+    <main>
+        <div id="onboarding-form-container" class="container">
+            <div class="onboarding-box">
+                <h2>Welcome to Ascend</h2>
+                <p>Let's get you set up. Please provide some initial details to build your trajectory.</p>
+                
+                <form id="new-user-form">
+                    <div class="form-group">
+                        <label for="user-name">Your Name:</label>
+                        <input type="text" id="user-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-age">Your Age:</label>
+                        <input type="number" id="user-age" required min="16" max="99">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-career">Career / Field of Work:</label>
+                        <input type="text" id="user-career" required placeholder="e.g., Marketing, Software Development">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-current-salary">Current Salary ($):</label>
+                        <input type="number" id="user-current-salary" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-desired-salary">Desired Salary ($):</label>
+                        <input type="number" id="user-desired-salary" required min="0">
+                    </div>
+                    
+                    <button type="submit" class="cta-button">Save & Start</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="main-dashboard-content">
+
+            <section class="dashboard-header">
+                <div class="container">
+                    <h1 class="welcome-title">Welcome!</h1>
+                    
+                    <div class="summary-grid">
+                        <div class="summary-metric">
+                            <h3>CURRENT SALARY</h3>
+                            <p>$<span id="current-salary-num">0</span></p>
+                        </div>
+                        <div class="summary-metric">
+                            <h3>DESIRED SALARY</h3>
+                            <p>$<span id="goal-salary-num">0</span></p>
+                        </div>
+                        <div class="summary-metric">
+                            <h3>CAREER FIELD</h3>
+                            <p id="career-field-text">N/A</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trajectory-graph">
+                <div class="container">
+                    <h2>Your Trajectory</h2>
+        
+                    <div class="graph-frame">
+        
+                    <div class="y-axis">
+                        <span id="graph-goal-salary">$0</span>
+                        <span id="graph-current-salary">$0</span>
+                    </div>
+
+                   <div class="graph-main">
+                   <div class="graph-container">
+                       <svg width="100%" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet">
+                        <path id="trajectory-path" 
+                              d="M 50 180 C 150 180, 250 100, 350 80 S 500 20, 550 20" 
+                              stroke="#0A2342" 
+                              stroke-width="4" 
+                              fill="none" />
+                        </svg>
+                   </div>
+
+                <div class="x-axis">
+                    <span>2025</span>
+                    <span>2031</span>
+                </div>
+            </div>
+
+        </div> </div>
+            </section>
+
+            <section class="dashboard-content">
+                <div class="container">
+                    <div class="milestones">
+                        <h2>Milestones</h2>
+                        <div class="milestones-list" id="milestones-list">
+                            </div>
+                        
+                        <form id="add-milestone-form">
+                            <h3>Add New Milestone</h3>
+                            <div class="form-group">
+                                <label for="new-milestone-text">Milestone</label>
+                                <input type="text" id="new-milestone-text" placeholder="e.g., Complete Data Analytics Course" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-milestone-year">Year</label>
+                                <input type="number" id="new-milestone-year" placeholder="e.g., 2026" required min="2025" max="2050">
+                            </div>
+                            <button type="submit" class="cta-button-secondary">+ Add Milestone</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+        </div> </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>    
+    <script src="js/dashboard.js"></script> 
+</body>
+</html>
