@@ -920,14 +920,13 @@ button:disabled:hover {
     z-index: 2;
 }
 
-/* The Hamburger Button */
 #hamburger-btn {
-    display: none; /* Hidden on desktop. */
+    display: none; /* Hidden on desktop */
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001; /* Top of menu. */
+    z-index: 1001; /* Sits on top */
 }
 
 #hamburger-btn .line {
@@ -939,7 +938,7 @@ button:disabled:hover {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* "X" Animation for the Hamburger */
+/* 2. The "X" Animation (when active) */
 #hamburger-btn.is-active .line1 {
     transform: translateY(8px) rotate(45deg);
 }
@@ -950,10 +949,11 @@ button:disabled:hover {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile Menu. */
+/* 3. The Full-Screen Menu (when open) */
 nav#main-nav.mobile-open {
-    display: flex; /* Makes it visible. */
-    position: fixed; /* Full-screen overlay. */
+    /* This is the key: it's a fixed overlay */
+    display: flex; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -961,50 +961,42 @@ nav#main-nav.mobile-open {
     background-color: rgba(255, 255, 255, 0.98);
     z-index: 1000;
     
-    /* Center the links vertically and horizontally. */
+    /* Center the <ul> inside it */
     justify-content: center;
     align-items: center;
 }
 
+/* 4. The Links (when menu is open) */
 nav#main-nav.mobile-open ul {
-    flex-direction: column; /* Stack the links. */
+    display: flex; /* THIS IS THE FIX */
+    flex-direction: column;
     text-align: center;
     gap: 30px;
 }
 
 nav#main-nav.mobile-open ul li {
-    margin-left: 0; /* Remove desktop spacing. */
+    margin-left: 0;
 }
 
 nav#main-nav.mobile-open ul li a {
-    font-size: 28px; /* Big, tappable links */
+    font-size: 28px;
     font-family: var(--font-heading);
 }
 
-/* Responsive Media Query */
+/* 5. The Responsive Rules */
 @media (max-width: 768px) {
     
-    /* Hide the desktop nav links and sign-in button. */
-    nav#main-nav ul {
+    /* Hide the desktop nav (which is just an empty <ul>) */
+    nav#main-nav {
         display: none;
     }
+    /* Hide the desktop sign-in button */
     .btn-signin {
         display: none;
     }
 
-    /* Show hamburger button. */
+    /* Show the hamburger button */
     #hamburger-btn {
         display: block;
-    }
-
-    nav#main-nav.mobile-open + .btn-signin {
-        display: block;
-        position: fixed;
-        z-index: 1001;
-        bottom: 50px; /* Position it below the links */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        text-align: center;
     }
 }
