@@ -715,16 +715,16 @@ button:disabled:hover {
 /* Desktop styling */
 @media (min-width: 769px) {
     .search-bar-container {
-        flex-direction: row; /* Side-by-side on desktop */
+        flex-direction: row; /* Side-by-side on desktop. */
     }
 
     .results-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns. */
     }
 }
 @media (min-width: 1024px) {
     .results-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns. */
     }
 }
 
@@ -735,14 +735,14 @@ button:disabled:hover {
     margin-bottom: 15px;
 }
 
-/* Utility styling */
+/* Utility styling. */
 
-/* Utitlity class to hide/show elements with JS */
+/* Utitlity class to hide/show elements with js. */
 .hidden {
     display: none;
 }
 
-/* Styles for "Welcome" form */
+/* Styles for "Welcome" form. */
 #onboarding-form-container {
     padding-top: 40px;
     padding-bottom: 60px;
@@ -938,7 +938,7 @@ button:disabled:hover {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* 2. The "X" Animation (when active) */
+/* "X" Animation (when active). */
 #hamburger-btn.is-active .line1 {
     transform: translateY(8px) rotate(45deg);
 }
@@ -949,9 +949,9 @@ button:disabled:hover {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* 3. The Full-Screen Menu (when open) */
+/* Full-Screen Menu (when open). */
 nav#main-nav.mobile-open {
-    /* This is the key: it's a fixed overlay */
+    /* Fixed overlay. */
     display: flex; 
     position: fixed;
     top: 0;
@@ -961,14 +961,14 @@ nav#main-nav.mobile-open {
     background-color: rgba(255, 255, 255, 0.98);
     z-index: 1000;
     
-    /* Center the <ul> inside it */
+    /* Center the <ul> inside it. */
     justify-content: center;
     align-items: center;
 }
 
-/* 4. The Links (when menu is open) */
+/* Links (when menu is open). */
 nav#main-nav.mobile-open ul {
-    display: flex; /* THIS IS THE FIX */
+    display: flex;
     flex-direction: column;
     text-align: center;
     gap: 30px;
@@ -983,19 +983,15 @@ nav#main-nav.mobile-open ul li a {
     font-family: var(--font-heading);
 }
 
-/* 5. The Responsive Rules */
+
 @media (max-width: 768px) {
     
-    /* Hide the desktop nav (which is just an empty <ul>) */
+    /* Hides the desktop nav (which is just an empty <ul>). */
     nav#main-nav {
         display: none;
     }
-    /* Hide the desktop sign-in button */
-    .btn-signin {
-        display: none;
-    }
 
-    /* Show the hamburger button */
+    /* Show the hamburger icon. */
     #hamburger-btn {
         display: block;
     }
