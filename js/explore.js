@@ -1,7 +1,5 @@
 'use strict';
 
-/* explore.js (Explore page)*/
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // Correct page checker i.e explore page

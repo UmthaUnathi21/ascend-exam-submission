@@ -1,5 +1,7 @@
 'use strict';
 
+/* dashboard.js */
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Onboarding form.
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Main dashboard.
     const mainDashboardContent = document.getElementById('main-dashboard-content');
     
-    // Correct page checker i.e dashboard page
+    // Correct page checker i.e dashboard page.
     if (!mainDashboardContent) {
         return; 
     }

@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-// Hero Page Load Timeline
+// Hero Page Load Timeline.
     gsap.timeline()
         .to(".hero-title span", {
             opacity: 1,
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 0.5
         }, "-=0.2");
 
-// ScrollTrigger 
+// ScrollTrigger. 
     gsap.utils.toArray(".step").forEach((step, i) => {
         gsap.fromTo(step, 
             { opacity: 0, y: 50 }, 
@@ -40,49 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-// Testimonials ScrollTrigger 
-    gsap.from(".testimonial-card", {
-        scrollTrigger: {
-            trigger: ".testimonials",
-            start: "top 70%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.5,
-        stagger: 0.2
-    });
+    /* Live API Job Previews. */
+    fetchPreviewJobs();
+    async function fetchPreviewJobs() {
     
-    gsap.from(".final-cta", {
-        scrollTrigger: {
-            trigger: ".final-cta",
-            start: "top 80%",
-            toggleActions: "play none none none"
-        },
-        opacity: 0,
-        duration: 1
-    });
+        const container = document.getElementById('preview-grid-container');
+        if (!container) return; // Exit if container not found.
+        container.innerHTML = '<p>Loading live jobs...</p>'; // Loading state.
 
-
-    /* Live API Job Previews */
-
-
-fetchPreviewJobs();
-
-async function fetchPreviewJobs() {
-    const container = document.getElementById('preview-grid-container');
-    if (!container) return; // Exit if container not found
-
-    container.innerHTML = '<p>Loading live jobs...</p>'; // Loading state
-
-    // API URL - it uses "Data Analyst" and will generate 3 results
+    // API URL - uses "Data Analyst" and will generate 3 results.
     const keyword = "Data Analyst";
     const url = `https://data.usajobs.gov/api/search?Keyword=${keyword}&ResultsPerPage=3`;
     
     const headers = {
         "Host": "data.usajobs.gov",
-        "User-Agent": "Ascend-Exam-Project/1.0 (umthaoupa@gmail.com)", // Your info
-        "Authorization-Key": "MpRDljoknJEr/AcmACHs94wSUUPnfkrmxESszM8Vn5k=" // The API Key
+        "User-Agent": "Ascend-Exam-Project/1.0 (umthaoupa@gmail.com)", // My info.
+        "Authorization-Key": "MpRDljoknJEr/AcmACHs94wSUUPnfkrmxESszM8Vn5k=" // The API Key.
     };
 
     try {
@@ -94,7 +67,7 @@ async function fetchPreviewJobs() {
         const data = await response.json();
         const jobs = data.SearchResult.SearchResultItems;
 
-        // Clear loading message
+        // Clear loading message.
         container.innerHTML = '';
 
         if (jobs.length > 0) {
@@ -142,7 +115,7 @@ function renderPreviewCards(jobs) {
 
     flashTimeline.to(cards, {
         scale: 1.05,
-        border: "2px solid var(--accent-gold)", // Flash to gold
+        border: "2px solid var(--accent-gold)", // Flash to gold.
         duration: 0.5,
         stagger: 0.3, // One by one.
         yoyo: true, // Animates back to original.
