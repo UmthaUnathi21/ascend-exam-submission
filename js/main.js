@@ -13,6 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: 'Dashboard', href: 'dashboard.html' },
         { text: 'Explore', href: 'explore.html' }
     ];
+
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mainNav = document.getElementById('main-nav');
+
+    if (hamburgerBtn && mainNav) {
+        hamburgerBtn.addEventListener('click', () => {
+            // Toggle the "X" animation on the button.
+            hamburgerBtn.classList.toggle('is-active');
+            
+            // Toggle the full-screen menu.
+            mainNav.classList.toggle('mobile-open');
+        });
+    }
     
     const navContainer = document.querySelector('nav ul');
 
